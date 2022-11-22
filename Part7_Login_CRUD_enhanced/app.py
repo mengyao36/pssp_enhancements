@@ -55,7 +55,6 @@ class Users(db.Model):
             'last_login': self.last_login
         }
 
-
 class Patients(db.Model):
     __tablename__ = 'production_patients'
 
@@ -503,9 +502,6 @@ def delete_condition(): # note this function needs to match name in html form ac
         flash("Patient Condition Deleted Successfully")
         ## then return to patient details page
         return redirect(url_for('get_patient_details', mrn=form_mrn))
-
-
-
 
 
 # this endpoint is for adding a new medication to a patient

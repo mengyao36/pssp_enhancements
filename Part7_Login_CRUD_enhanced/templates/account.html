@@ -7,28 +7,83 @@
     <div class="container">
         <div class="row justify-content-center algin-items-center">
             <br />
-            <p>Your account details are below:</p>
+            <p>Account Infomration</p>
             <table class="table table-striped">
-                <tr>
-                    <td>Username:</td>
-                    <td>{{ account.username }}</td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td>{{ account.email }}</td>
-                </tr>
-                <tr>
-                    <td>Account type:</td>
-                    <td>{{ account.account_type }}</td>
-                </tr>
-                <tr>
-                    <td>Account ID:</td>
-                    <td>{{ account.id }}</td>
-                </tr>
-                <tr>
-                    <td>Account MRN:</td>
-                    <td>{{ account.mrn }}</td>
-                </tr>
+                    <tr>
+                        <td>Username:</td>
+                        <td>{{ account.username }}</td>
+                        <a href="/update_conditions/{{account.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaleditcondition{{account.id}}">Edit</a>
+                    </tr>
+
+                    <!-- MODEL WINDOW FOR EDITING -->
+            
+                    <div id="modaleditcondition{{account.id}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Update Account Information</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form action="{{url_for('update_conditions')}}" method="POST">
+
+                                    <div class="form-group">
+                                        <label for="mrn">Username</label>
+                                        <input type="text" class="form-control" name="mrn" value="{{account.username}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mrn">Email</label>
+                                        <input type="text" class="form-control" name="mrn" value="{{account.email}}">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="mrn">Account type</label>
+                                        <input type="text" class="form-control" name="mrn" value="{{account.account_type}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mrn">Account ID</label>
+                                        <input type="text" class="form-control" name="id" value="{{account.id}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mrn">Account MRN</label>
+                                        <input type="text" class="form-control" name="mrn" value="{{account.mrn}}" readonly>
+
+                                    <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Update</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ account.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Account type:</td>
+                        <td>{{ account.account_type }}</td>
+                    </tr>
+                    <tr>
+                        <td>Account ID:</td>
+                        <td>{{ account.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Account MRN:</td>
+                        <td>{{ account.mrn }}</td>
+                    </tr>
             </table>
         </div>
     </div>
